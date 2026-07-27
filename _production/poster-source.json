@@ -1,9 +1,9 @@
 {
   "endpoint": "https://chat.aiwaves.tech/aigram/api/gen-image",
   "origin": "https://aigram.app",
-  "generated_at": "2026-07-27T09:41:51.519830+00:00",
-  "generated_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785145301102988.webp",
-  "prompt": "Create premium square 1024x1024 full-bleed illustrated game key art, one cinematic\nscene rather than a UI mockup. Keep the main character, face, and decisive prop\ninside the central 60 percent. The bottom 20 percent contains only expendable\natmosphere because store controls may cover it. Reserve the upper 22 percent as\na broad, calm, uniform field of atmospheric color for later graphic design.\nDeliver a pure textless story illustration with a clean uninterrupted silhouette.\n A lone elegant white-suited aerial ink performer floats in a vast charcoal\n cubic warehouse,\n bracing a small white circular color cannon as its recoil pushes the body\n backward. Four walls are struck by vivid cyan, orchid, blush and acid-lime\n abstract paint explosions, with frozen droplets forming a dramatic\n four-direction composition. Editorial screen-print texture, sophisticated dark\n negative space, visceral recoil, one bright central figure, unmistakable action.\n",
+  "generated_at": "2026-07-27T11:14:03.575425+00:00",
+  "generated_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785150837000103.webp",
+  "prompt": "Create award-quality square 1024x1024 key art for an experimental touch game.\nMake one authored visual statement, never a mobile UI, app icon, generic fantasy\nposter, mascot illustration, or children's cartoon. Keep the decisive mechanism\ninside the central 60 percent. The bottom 20 percent contains only expendable\natmosphere because store controls may cover it. Reserve the upper 24 percent as\na calm, low-detail field for later typography. Deliver pure textless raster art:\nno words, letters, logos, borders, frames, interface panels, badges, or mockups.\n Inside a deep charcoal cubic chamber, one small pristine white circular capsule\n fires a luminous pigment pulse to the right while the capsule is visibly thrown\n backward along a thin recoil trail. Cyan, hot magenta, violet and acid-lime\n splashes strike the four boundaries, with crisp frozen droplets and broad empty\n black space between them. No person and no gun. Radical Swiss editorial\n printmaking, screen-printed ink grain, severe geometry, asymmetric composition,\n high contrast, elegant rather than comic, instantly readable at thumbnail size.\n",
   "size": [
     1024,
     1024
@@ -11,7 +11,8 @@
   "composition": {
     "source_art": "_production/poster-art.png",
     "title": "RECOIL BLOOM",
-    "font": "/System/Library/Fonts/Supplemental/Arial Narrow Bold.ttf",
-    "method": "Pillow raster typography over Aigram-generated raster art"
+    "font": "/System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf",
+    "crop": null,
+    "method": "Pillow raster title typography over Aigram-generated raster art"
   }
 }

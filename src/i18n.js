@@ -10,7 +10,7 @@ const copy = {
   },
   zh: {
     eyebrow: "边缘印记 / 04",
-    title: "后坐绽放",
+    title: "RECOIL BLOOM",
     hint: "拖动瞄准 · 按住喷射",
     progress: (n) => `已印下 ${n} / 4 边`,
     complete: "画面已签署",

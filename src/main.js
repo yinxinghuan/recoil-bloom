@@ -1,5 +1,6 @@
 import "./style.css";
 import { t } from "./i18n.js";
+import { recoilAudio } from "./audio.js";
 
 const baseline = new URLSearchParams(location.search).get("baseline") === "1";
 document.documentElement.classList.toggle("rb-baseline", baseline);
@@ -101,6 +102,7 @@ class RecoilBloom {
     });
     stage.addEventListener("pointerdown", (event) => {
       if (event.target.closest("button") || this.pointerId !== null || !this.running) return;
+      recoilAudio.unlock();
       this.pointerId = event.pointerId;
       stage.setPointerCapture?.(event.pointerId);
       this.player.lookAt(event.clientX, event.clientY);
@@ -128,6 +130,7 @@ class RecoilBloom {
   }
 
   shoot() {
+    recoilAudio.shot();
     this.player.recoil(1.55);
     const projectile = new GameObject({
       x: this.player.position.x,
@@ -169,6 +172,7 @@ class RecoilBloom {
     target.classList.add("is-hit");
     progress.textContent = `${this.hitEdges.size} / 4`;
     progress.setAttribute("aria-label", t("progress", this.hitEdges.size));
+    recoilAudio.edge(edge);
     if (navigator.vibrate) navigator.vibrate(16);
     if (this.hitEdges.size === 4) this.finish();
   }
@@ -221,10 +225,13 @@ class RecoilBloom {
     stage.classList.add("is-complete");
     completion.classList.add("is-visible");
     replay.hidden = false;
+    recoilAudio.complete();
     if (navigator.vibrate) navigator.vibrate([24, 40, 48]);
   }
 
   reset() {
+    recoilAudio.unlock();
+    recoilAudio.reset();
     [...this.projectiles, ...this.particles.map((item) => item.particle), ...this.spatters].forEach((item) => item.destroy());
     this.projectiles = [];
     this.particles = [];

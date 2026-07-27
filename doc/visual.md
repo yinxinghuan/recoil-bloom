@@ -15,7 +15,7 @@
 - Camera and perspective: 正交屏幕空间；所有元素使用 CSS 像素定位。
 - Playfield focal area: 全屏；四边是目标，中心是初始焦点。
 - Foreground, midground, background: UI/喷射器、弹丸与粒子、`#202126` 纯色背景。
-- HUD safe areas: 标题和进度避开顶部安全区，完成文案与重播避开底部安全区。
+- HUD safe areas: 英文主标题 `RECOIL BLOOM` 在所有语言环境固定不翻译，并与进度共同避开顶部安全区；完成文案与重播避开底部安全区。
 - Attention path: 中心喷射器 → 指针方向弹丸 → 边缘爆裂 → 四边完成。
 
 ## 3. Color
