@@ -3,9 +3,9 @@
 ## 1. Visual thesis
 
 - Game and audience: 面向短时触摸探索的全屏视觉玩具。
-- Emotional promise: 用后坐力失控地“签署”一张只属于本轮的喷溅画。
+- Emotional promise: 在可恢复的弹性摆动中，用短喷依次点亮六瓣并“签署”一张只属于本轮的喷溅画。
 - One-sentence visual thesis: 一台极简白边喷射器在炭灰画布上留下高彩度 LCH 墨迹。
-- Signature visual moment: 第四条边首次爆裂时，四个边缘印记同时退场，玩家生成的飞溅成为完整作品。
+- Signature visual moment: 第六个边缘花瓣爆裂时，目标退场，玩家生成的飞溅成为完整作品。
 - Three required qualities: 原作 CSS DOM 质感、连续色相、画布无框。
 - Three directions to avoid: Canvas 粒子近似、霓虹玻璃 HUD、卡通枪械。
 
@@ -13,10 +13,10 @@
 
 - Orientation and aspect ratios: 全响应式无相机画布，覆盖 `320×568`、`390×844` 与桌面。
 - Camera and perspective: 正交屏幕空间；所有元素使用 CSS 像素定位。
-- Playfield focal area: 全屏；四边是目标，中心是初始焦点。
+- Playfield focal area: 全屏；当前发光花瓣是目标，中心弹性锚点是恢复空间。
 - Foreground, midground, background: UI/喷射器、弹丸与粒子、`#202126` 纯色背景。
 - HUD safe areas: 英文主标题 `RECOIL BLOOM` 在所有语言环境固定不翻译，并与进度共同避开顶部安全区；完成文案与重播避开底部安全区。
-- Attention path: 中心喷射器 → 指针方向弹丸 → 边缘爆裂 → 四边完成。
+- Attention path: 当前发光花瓣 → 中心喷射器 → 指针方向弹丸 → 边缘爆裂 → 下一花瓣。
 
 ## 3. Color
 
@@ -32,7 +32,7 @@
 
 ## 5. Shape, material, and lighting
 
-- Dominant shapes: 圆形喷射器、椭圆弹丸、圆形粒子、十字定位印记。
+- Dominant shapes: 圆形喷射器、椭圆弹丸、圆形粒子、边缘花瓣与极细弹性线。
 - Borders: 1px 米白半透明；按钮无面板。
 - Materials: 纯 CSS 实色与 box-shadow，不增加纹理或光照。
 - Atmosphere: 高对比、平面、像丝网印刷前的暗底。
@@ -47,14 +47,14 @@
 
 - Icon family: 自绘 24×24 单线 SVG，1.7px 圆端描边；手势提示使用 Material `touch_app` 路径。
 - Button targets: 重播 44×44。
-- HUD: 无卡片；仅边缘排版与一条细描边提示。
+- HUD: 无卡片；仅边缘排版、当前花瓣与一条低对比中心弹性线。
 - Press/focus: 重播保留浏览器焦点并用颜色变化反馈；完成前隐藏。
 - Emoji policy: never use emoji as functional UI icons.
 
 ## 8. Motion and VFX
 
 - Routine: 喷射器 `100ms` 交替压缩；弹丸与粒子逐帧更新。
-- Hit: `180ms` 目标放大并降低不透明度。
+- Hit: `180ms` 当前花瓣放大着色后切换；打偏时花瓣收缩一次。
 - Completion: `260ms` 文案上移淡入，喷射器只增加同色柔和阴影。
 - Reduced motion: 关闭喷射器压缩动画，保留物理位移和完成状态。
 
@@ -62,7 +62,7 @@
 
 - Reference: David Aerne, “css splatters (click for craze)”.
 - Useful principle: CSS 盒模型本身就是粒子渲染器，碰撞后停驻比消散更有画面记忆。
-- Adaptation: 用四边首次命中建立自定节奏闭环，不改变弹道、后坐力与 LCH 配色。
+- Adaptation: 用六个依次点亮的边缘花瓣建立自定节奏闭环；保留弹道、反冲与 LCH 配色，但加入中心弹性恢复，避免不可逆角落锁死。
 - Element not to copy: CodePen 外壳与注释掉的分数。
 
 ## 10. Anti-patterns
@@ -74,9 +74,9 @@
 
 ## 11. Vertical-slice acceptance
 
-- Entry/start: 首帧即见喷射器、四个定位印记与真实手势提示。
-- Gameplay: 按住产生原作弹道与后坐力，边缘碰撞产生停驻粒子。
-- High-feedback moment: 首次命中每条边时定位印记以弹丸颜色确认。
-- Completion/end: 四边命中后保留全画面并出现重播。
+- Entry/start: 首帧即见喷射器、当前发光花瓣与真实手势提示。
+- Gameplay: 短喷产生原作弹道与可恢复后坐力；松手能明显回中，打偏仍留下停驻粒子。
+- High-feedback moment: 命中当前花瓣时以弹丸颜色确认并切换下一目标。
+- Completion/end: 六瓣依次命中后保留全画面并出现重播。
 - Narrow mobile: `320×568` 标题、进度、底部提示不重叠；无水平滚动。
-- Visual QA findings and decision: 待真实运行截图与复验后填写。
+- Visual QA findings and decision: 顶部目标最初与标题、底部目标最初与手势提示重叠；改为沿真实命中射线内收，并为上 / 下 / 侧边分别使用 `210 / 112 / 44px` 安全距离。390×844 与 320×568 复验通过。

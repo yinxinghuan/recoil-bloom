@@ -107,16 +107,31 @@ button { font: inherit; }
   border: 1px solid rgba(255,255,255,.34);
   border-radius: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
   transition: border-color 180ms ease, transform 180ms ease, opacity 180ms ease;
 }
-.rb-target::before, .rb-target::after { content: ""; position: absolute; inset: 50%; background: rgba(255,255,255,.45); transform: translate(-50%,-50%); }
-.rb-target::before { width: 20px; height: 1px; }
-.rb-target::after { width: 1px; height: 20px; }
-.rb-target.is-hit { border-color: var(--target-color); transform: translate(-50%,-50%) scale(1.24); opacity: .22; }
-.rb-target--top { top: 82px; left: 50%; }
-.rb-target--right { right: -33px; top: 50%; }
-.rb-target--bottom { bottom: -33px; left: 50%; }
-.rb-target--left { left: 1px; top: 50%; }
+.rb-target::before, .rb-target::after { content: ""; position: absolute; inset: 50%; width: 9px; height: 18px; border: 1px solid rgba(255,255,255,.62); border-radius: 50%; transform-origin: 0 0; }
+.rb-target::before { transform: translate(-50%,-100%) rotate(-45deg); }
+.rb-target::after { transform: translate(-50%,0) rotate(-45deg); }
+.rb-target.is-active { opacity: 1; border-color: rgba(255,255,255,.72); animation: rb-target-breathe 1.35s ease-in-out infinite; }
+.rb-target.is-hit { border-color: var(--target-color); transform: translate(-50%,-50%) scale(1.42); opacity: .18; animation: none; }
+.rb-target.is-missed { animation: rb-target-miss 180ms ease; }
+.rb-target--top,
+.rb-target--right,
+.rb-target--bottom,
+.rb-target--left { left: 50%; top: 50%; }
+
+.rb-tether {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--length, 0);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(246,243,236,.04), rgba(246,243,236,.2));
+  transform: rotate(var(--angle, 0rad));
+  transform-origin: 0 50%;
+  opacity: .72;
+}
 
 .player {
   --t: 1;
@@ -166,7 +181,19 @@ button { font: inherit; }
 .rb-error { position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; padding: 30px; text-align: center; color: var(--rb-ink); background: #202126; }
 .rb-error[hidden] { display: none; }
 .rb-baseline .rb-ui,
-.rb-baseline .rb-target { display: none; }
+.rb-baseline .rb-target,
+.rb-baseline .rb-tether { display: none; }
 
 @keyframes rb-player-float { from { --t: .75; } to { --t: 1; } }
-@media (prefers-reduced-motion: reduce) { .shooting .player { animation: none; } }
+@keyframes rb-target-breathe {
+  0%, 100% { transform: translate(-50%,-50%) scale(.88); }
+  50% { transform: translate(-50%,-50%) scale(1.12); }
+}
+@keyframes rb-target-miss {
+  0%, 100% { transform: translate(-50%,-50%) scale(1); }
+  50% { transform: translate(-50%,-50%) scale(.68); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shooting .player,
+  .rb-target.is-active { animation: none; }
+}

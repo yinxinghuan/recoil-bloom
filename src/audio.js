@@ -2,6 +2,7 @@ class RecoilAudio {
   constructor() {
     this.context = null;
     this.lastShotAt = 0;
+    this.lastMissAt = 0;
   }
 
   unlock() {
@@ -31,7 +32,7 @@ class RecoilAudio {
 
   shot() {
     const now = performance.now();
-    if (!this.context || now - this.lastShotAt < 68) return;
+    if (!this.context || now - this.lastShotAt < 76) return;
     this.lastShotAt = now;
     this.tone(150, .065, .018, "square", .42);
   }
@@ -40,6 +41,13 @@ class RecoilAudio {
     const frequency = { top: 659, right: 784, bottom: 523, left: 587 }[edge] || 587;
     this.tone(frequency, .16, .045, "triangle", 1.35);
     this.tone(frequency / 2, .11, .024, "sine", .72, .018);
+  }
+
+  miss() {
+    const now = performance.now();
+    if (!this.context || now - this.lastMissAt < 180) return;
+    this.lastMissAt = now;
+    this.tone(92, .07, .015, "sine", .67);
   }
 
   complete() {
