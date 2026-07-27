@@ -1,0 +1,17 @@
+{
+  "endpoint": "https://chat.aiwaves.tech/aigram/api/gen-image",
+  "origin": "https://aigram.app",
+  "generated_at": "2026-07-27T09:41:51.519830+00:00",
+  "generated_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785145301102988.webp",
+  "prompt": "Create premium square 1024x1024 full-bleed illustrated game key art, one cinematic\nscene rather than a UI mockup. Keep the main character, face, and decisive prop\ninside the central 60 percent. The bottom 20 percent contains only expendable\natmosphere because store controls may cover it. Reserve the upper 22 percent as\na broad, calm, uniform field of atmospheric color for later graphic design.\nDeliver a pure textless story illustration with a clean uninterrupted silhouette.\n A lone elegant white-suited aerial ink performer floats in a vast charcoal\n cubic warehouse,\n bracing a small white circular color cannon as its recoil pushes the body\n backward. Four walls are struck by vivid cyan, orchid, blush and acid-lime\n abstract paint explosions, with frozen droplets forming a dramatic\n four-direction composition. Editorial screen-print texture, sophisticated dark\n negative space, visceral recoil, one bright central figure, unmistakable action.\n",
+  "size": [
+    1024,
+    1024
+  ],
+  "composition": {
+    "source_art": "_production/poster-art.png",
+    "title": "RECOIL BLOOM",
+    "font": "/System/Library/Fonts/Supplemental/Arial Narrow Bold.ttf",
+    "method": "Pillow raster typography over Aigram-generated raster art"
+  }
+}
